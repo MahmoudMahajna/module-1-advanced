@@ -6,6 +6,11 @@ using System.Threading.Tasks;
 
 namespace AttribDemo
 {
+    /**
+     It is not reccomended to set inherited to true unless necessary.
+        The inherited attribute means that the attribute will decorate each derived class of the decorated class
+        Which is not something we would want in this case - since each class should be reviewed regardless of whether or not its base class was reviewed
+         */
     [AttributeUsage(AttributeTargets.Class|AttributeTargets.Struct,AllowMultiple = true,Inherited = true)]
    public class CodeReviewAttribute:System.Attribute
     {

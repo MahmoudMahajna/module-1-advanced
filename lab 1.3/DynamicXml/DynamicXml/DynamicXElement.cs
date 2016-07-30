@@ -28,6 +28,7 @@ namespace DynamicXml
             }
             else
             {
+                //What happens if '_element.Element' returns null?
                 dynamic e = _element.Element(binder.Name);
                 result = new DynamicXElement(e);
                 return e != null ? true : false;
@@ -53,8 +54,10 @@ namespace DynamicXml
         {      
             if(!(indexes.Length == 2 && indexes[0] is string && indexes[1] is int))
             {
+                //Very good! - consider 'System.ArgumentException'
                 throw new Exception("Exception: Bad Indexes!!");
             }
+            //What happens if '_element.Elements' returns an empty collection?
             var children = _element.Elements((string)indexes[0]);
             result = new DynamicXElement(children.ToArray().ElementAt((int)indexes[1]));
             return result != null ? true : false;
